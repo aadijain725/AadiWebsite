@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aadi Jain — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #fafaf9;
+    --text: #1c1917;
+    --muted: #78716c;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --card: #ffffff;
+    --border: #e7e5e4;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .resume-header {
+    background: linear-gradient(165deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%);
+    color: #fff;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .resume-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(59,130,246,0.3) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(147,197,253,0.15) 0%, transparent 50%);
+  }
+
+  .resume-header-content {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .resume-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .contact-row a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-row a:hover { color: #fff; }
+
+  .back-link {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: #fff; }
+
+  /* ── Resume Body ── */
+  .resume {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  .section { margin-bottom: 2.5rem; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-light);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .profile-text {
+    font-size: 0.95rem;
+    color: #44403c;
+    line-height: 1.8;
+  }
+
+  /* ── Skills ── */
+  .skill-group { margin-bottom: 0.75rem; }
+
+  .skill-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── Experience ── */
+  .job {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .job-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .job-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .job-date {
+    font-size: 0.82rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .job-company {
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .job-location {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .job ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .job li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: #44403c;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .job li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .job li:last-child { margin-bottom: 0; }
+
+  /* ── Education ── */
+  .edu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  .edu-degree {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .edu-date {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .edu-school {
+    width: 100%;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .edu-gpa {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── Footer ── */
+  .resume-footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  .resume-footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .resume-footer a:hover { text-decoration: underline; }
+
+  /* ── Print ── */
+  @media print {
+    .resume-header { padding: 2rem 1rem 1.5rem; }
+    .back-link { display: none; }
+    .resume { padding: 1rem; }
+    .job { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .resume { padding: 1.5rem 1.25rem 3rem; }
+    .job { padding: 1rem 1.15rem; }
+    .back-link { position: relative; top: 0; left: 0; display: block; margin-bottom: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="resume-header">
+  <a href="index.html" class="back-link">&larr; Back to story</a>
+  <div class="resume-header-content">
+    <h1>Aadi Jain</h1>
+    <div class="contact-row">
+      <span>New Delhi, India</span>
+      <span>&middot;</span>
+      <a href="tel:+918826969900">+91-882-696-9900</a>
+      <span>&middot;</span>
+      <a href="mailto:aadijain725@gmail.com">aadijain725@gmail.com</a>
+      <span>&middot;</span>
+      <a href="https://www.linkedin.com/in/aadi-jain-tech/" target="_blank" rel="noopener">LinkedIn</a>
+      <span>&middot;</span>
+      <a href="https://github.com/aadijain725" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main class="resume">
+
+  <!-- Profile -->
+  <div class="section">
+    <h2 class="section-title">Profile</h2>
+    <p class="profile-text">Product-minded engineer with 4 years of experience shipping consumer-scale mobile products at Google and 0&ndash;1 government applications at RMSI. Authored PRDs defining user personas, success metrics, and phased roadmaps for field-deployed government apps. Designed and ran A/B experiments at Gboard for features reaching hundreds of millions of users. Seeking Product Manager roles at startups where technical depth, 0&ndash;1 product thinking, and real PRD authorship translate into product ownership.</p>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skill-group">
+      <div class="skill-label">Product &amp; Management</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PRD authorship</span>
+        <span class="skill-tag">User persona mapping</span>
+        <span class="skill-tag">Success metrics</span>
+        <span class="skill-tag">Requirements gathering</span>
+        <span class="skill-tag">Stakeholder management</span>
+        <span class="skill-tag">User journey mapping</span>
+        <span class="skill-tag">Product roadmap</span>
+        <span class="skill-tag">A/B testing</span>
+        <span class="skill-tag">Agile delivery</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Android (Java/Kotlin)</span>
+        <span class="skill-tag">Flutter/Dart</span>
+        <span class="skill-tag">React Native</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">ASP.NET Core</span>
+        <span class="skill-tag">SQL/PostgreSQL</span>
+        <span class="skill-tag">Firebase</span>
+        <span class="skill-tag">ArcGIS SDK</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Git/GitHub</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Data &amp; Domain</div>
+      <div class="skill-tags">
+        <span class="skill-tag">A/B experimentation</span>
+        <span class="skill-tag">Analytics instrumentation</span>
+        <span class="skill-tag">On-device ML</span>
+        <span class="skill-tag">GovTech</span>
+        <span class="skill-tag">Geospatial apps</span>
+        <span class="skill-tag">Offline-first architecture</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Senior Full Stack Engineer</span>
+        <span class="job-date">Nov 2024 &ndash; Mar 2026</span>
+      </div>
+      <div class="job-company">RMSI Private Limited <span class="job-location">&middot; Noida, India</span></div>
+      <ul>
+        <li>Authored 11-page PRD for the Assam Patrolling App: product vision, 4 user personas with pain points, measurable success metrics (&ge;95% route accuracy, 100% offline reliability, &le;10% battery/8hr patrol), user journeys, and 4-milestone phased roadmap.</li>
+        <li>Identified core field constraint &mdash; forest rangers with zero connectivity &mdash; and designed offline-first architecture: local geodatabase + post-connectivity sync, ensuring 100% session reliability during field patrols.</li>
+        <li>Gathered requirements from Assam government clients and translated vague briefs into buildable specs through structured sessions with team leads and stakeholders.</li>
+        <li>Built two 0&ndash;1 government-deployed apps from scratch (Patrolling + Forest Resource Assessment) &mdash; Flutter, .NET backend, ArcGIS SDK &mdash; shipped to field deployment across Assam forest divisions.</li>
+        <li>Wrote FRA purpose document projecting 30&ndash;50% efficiency gain and &gt;90% reduction in post-collection data corrections. Produced 10-document KT pack across both projects.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Software Engineer &mdash; Gboard, Android</span>
+        <span class="job-date">Aug 2022 &ndash; Jun 2024</span>
+      </div>
+      <div class="job-company">Google LLC <span class="job-location">&middot; Mountain View, CA</span></div>
+      <ul>
+        <li>Shipped features to hundreds of millions of Gboard users on Android's most widely used keyboard across global markets.</li>
+        <li>Identified emoji inclusivity gap, drove cross-team initiative: scoped work, aligned engineering and content teams, shipped ~100 new entries (skin tone/gender variants) reaching millions of users.</li>
+        <li>Designed and ran A/B experiments across the full lifecycle &mdash; hypothesis, instrumentation, staged rollout, data-driven analysis &mdash; to validate features before broad deployment.</li>
+        <li>Built LM-powered emoji search algorithms improving discoverability; reduced rich content loading time ~5% via on-device indexing. Refactored Emoji Kitchen into modular architecture, cutting tech debt ~10%.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Software Engineering Consultant</span>
+        <span class="job-date">Aug 2024 &ndash; Nov 2024</span>
+      </div>
+      <div class="job-company">UNOICT / IDFC Foundation <span class="job-location">&middot; Remote</span></div>
+      <ul>
+        <li>Built Climate Change and Urban Development Portal (React, Node.js, MongoDB) for IDFC Foundation as part of a 6-person team, enabling researchers to archive climate research and connect across institutions.</li>
+        <li>Co-authored functional requirements document covering 5 user roles, authentication flows, academic repository and graduate networking specs, and planned LLM integration for advanced search.</li>
+        <li>Mentored junior team members on frontend patterns and UI principles throughout Phase 1 prototype delivery.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="edu">
+      <span class="edu-degree">Bachelor of Science, Computer Science</span>
+      <span class="edu-date">Jun 2022</span>
+      <span class="edu-school">University of Washington, Seattle</span>
+      <span class="edu-gpa">GPA: 3.78 / 4.0</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="resume-footer">
+  <a href="index.html">&larr; Back to story</a> &middot; Built by Aadi Jain &middot; 2026
+</footer>
+
+</body>
+</html>
