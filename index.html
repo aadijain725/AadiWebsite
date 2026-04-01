@@ -3,50 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aadi Jain — This Is Me</title>
-<meta name="description" content="Engineer. Builder. Figuring out what's next. Four years shipping products across Google, the UN, and Indian government tech.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Aadi Jain — Life at Work</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #fafaf9;
+    --text: #1c1917;
+    --muted: #78716c;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --card: #ffffff;
+    --border: #e7e5e4;
+    --timeline: #d6d3d1;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(165deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(59,130,246,0.3) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(147,197,253,0.15) 0%, transparent 50%);
+  }
+
+  .hero-content { position: relative; max-width: 700px; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero .tagline {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero .cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+  }
+  .hero .cta:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+  /* ── Honest Intro ── */
+  .intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .intro p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+
+  /* ── Timeline ── */
+  .timeline-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 2rem 5rem;
+  }
+
+  .timeline-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--timeline);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.45rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2.5px solid var(--accent);
+    z-index: 1;
+  }
+
+  .timeline-item.highlight::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-light);
+  }
+
+  .tl-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tl-role {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .tl-company {
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .tl-date {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .tl-location {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .tl-body {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .tl-body p {
+    font-size: 0.95rem;
+    color: #44403c;
+    line-height: 1.75;
+  }
+
+  .tl-body .honest {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── The Shift ── */
+  .shift {
+    background: #f5f3ff;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .shift-inner {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .shift h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4338ca;
+  }
+
+  .shift p {
+    font-size: 1.05rem;
+    color: #57534e;
+    line-height: 1.85;
+  }
+
+  .shift .arrow {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #818cf8;
+  }
+
+  /* ── CTA Footer ── */
+  .footer-cta {
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-cta p {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #1d4ed8; }
+
+  .btn-outline {
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .timeline { padding-left: 2rem; }
+    .timeline-item::before { left: -2rem; }
+    .tl-body { padding: 1rem 1.15rem; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ── Nav ── -->
-<nav class="nav">
-  <a href="#" class="nav-logo">Aadi Jain</a>
-  <ul class="nav-links">
-    <li><a href="#story">Story</a></li>
-    <li><a href="#timeline">Timeline</a></li>
-    <li><a href="#exploring">Exploring</a></li>
-    <li><a href="#beliefs">Beliefs</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
 <!-- ── Hero ── -->
-<section class="hero" id="hero">
+<section class="hero">
   <div class="hero-content">
-    <h1>Engineer. Builder.<br>Figuring out what's next.</h1>
-    <p class="tagline">Four years shipping products across Google, the United Nations, and Indian government tech — now building toward something of my own.</p>
-    <a href="#story" class="cta">Read my story</a>
+    <h1>I started as an engineer.<br>I'm becoming a PM.</h1>
+    <p class="tagline">An honest look at what working across Google, the United Nations, and Indian government tech actually looked like — and why I'm changing lanes.</p>
+    <a href="#story" class="cta">Read the story</a>
   </div>
-  <span class="scroll-hint">&#8595;</span>
 </section>
 
 <!-- ── Intro ── -->
-<section class="intro reveal" id="story">
+<section class="intro" id="story">
   <h2>The short version</h2>
-  <p>I spent two years at Google shipping features to a billion users. Then I went to the UN to build a climate data portal. Then I joined RMSI and shipped two government apps from scratch for the state of Assam. Somewhere along the way, I stopped caring about the code and started caring about the problem. Now I'm in the space between what I was and what I'm becoming — exploring PropTech, AI, and what it means to build something from scratch.</p>
+  <p>I spent two years at Google shipping features to a billion users. Then I went to the UN to build a climate data portal. Then I joined RMSI and shipped two government apps from scratch for the state of Assam. Somewhere along the way, I stopped caring about the code and started caring about the problem. Now I'm looking for PM roles where I can bring both.</p>
 </section>
 
 <!-- ── Timeline ── -->
-<section class="timeline-section" id="timeline">
-  <h2 class="reveal">The longer version</h2>
+<section class="timeline-section">
+  <h2>The longer version</h2>
 
   <div class="timeline">
 
     <!-- RMSI -->
-    <div class="timeline-item highlight reveal">
+    <div class="timeline-item highlight">
       <div class="tl-header">
         <span class="tl-role">Senior Full Stack Engineer</span>
         <span class="tl-company">RMSI</span>
@@ -65,7 +360,7 @@
     </div>
 
     <!-- UN -->
-    <div class="timeline-item highlight reveal">
+    <div class="timeline-item highlight">
       <div class="tl-header">
         <span class="tl-role">Lead Technical Consultant</span>
         <span class="tl-company">United Nations (UNOICT / IDFC)</span>
@@ -84,7 +379,7 @@
     </div>
 
     <!-- Google -->
-    <div class="timeline-item reveal">
+    <div class="timeline-item">
       <div class="tl-header">
         <span class="tl-role">Software Engineer</span>
         <span class="tl-company">Google</span>
@@ -102,8 +397,8 @@
       </div>
     </div>
 
-    <!-- UW -->
-    <div class="timeline-item reveal">
+    <!-- UW & Earlier -->
+    <div class="timeline-item">
       <div class="tl-header">
         <span class="tl-role">Student &amp; TA</span>
         <span class="tl-company">University of Washington — Paul G. Allen School</span>
@@ -125,66 +420,20 @@
 </section>
 
 <!-- ── The Shift ── -->
-<section class="shift reveal">
+<section class="shift">
   <div class="shift-inner">
     <span class="arrow">&#8595;</span>
-    <h2>What's next</h2>
-    <p>Every role I've had has pulled me closer to the problem and further from the terminal. At Google I learned scale. At the UN I learned stakeholder alignment. At RMSI I learned what 0-to-1 actually feels like when the users are forest rangers in Assam with intermittent connectivity. I don't want to go back to just building features. I want to own the whole thing — not just the what and why, but the business underneath it.</p>
-  </div>
-</section>
-
-<!-- ── Exploring ── -->
-<section class="exploring" id="exploring">
-  <h2 class="reveal">What I'm exploring</h2>
-  <p class="section-sub reveal">Active threads, not finished products. This is what my days look like right now.</p>
-
-  <div class="explore-grid">
-
-    <div class="explore-card reveal">
-      <div class="explore-card-header">
-        <h3>PropTech</h3>
-        <span class="status status-researching">researching</span>
-      </div>
-      <p>Family has been in Delhi real estate for decades. I'm exploring how to build a tech layer on top of that — deal sourcing, asset evaluation, motivated seller intelligence. Not a startup pitch yet, but a genuine unfair-advantage play.</p>
-    </div>
-
-    <div class="explore-card reveal">
-      <div class="explore-card-header">
-        <h3>AI Agent Workflows</h3>
-        <span class="status status-building">building</span>
-      </div>
-      <p>Building with LLMs and agent frameworks as both a tool and proof of work. Automations for law, e-commerce, insurance. The best way to understand AI products is to ship them.</p>
-    </div>
-
-    <div class="explore-card reveal">
-      <div class="explore-card-header">
-        <h3>E-waste &amp; Urban Mining</h3>
-        <span class="status status-exploring">exploring</span>
-      </div>
-      <p>Researching EPR certification, critical mineral recovery, and recycling plant economics. India is 100% import-dependent on lithium and cobalt. There's a real business in urban mining — figuring out if I'm the one to build it.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── Beliefs ── -->
-<section class="beliefs" id="beliefs">
-  <div class="beliefs-inner">
-    <h2 class="reveal">What I believe</h2>
-    <p class="belief-line reveal">Building beats planning. Shipping beats perfecting.</p>
-    <p class="belief-line reveal">Curiosity is a better career strategy than optimization.</p>
-    <p class="belief-line reveal">The best products come from people who've touched the ground.</p>
-    <p class="belief-line reveal">Non-linear paths are underrated.</p>
-    <p class="belief-line reveal">The most interesting people I know are in transition.</p>
+    <h2>Why PM, why now</h2>
+    <p>Every role I've had has pulled me closer to the problem and further from the terminal. At Google I learned scale. At the UN I learned stakeholder alignment. At RMSI I learned what 0-to-1 actually feels like when the users are forest rangers in Assam with intermittent connectivity. I don't want to go back to just building. I want to own the what and why.</p>
   </div>
 </section>
 
 <!-- ── CTA ── -->
-<section class="footer-cta" id="contact">
-  <h2 class="reveal">Let's talk</h2>
-  <p class="reveal">I'm open to conversations about product, technology, PropTech, building in India, or anything that sounds like an interesting problem.</p>
-  <div class="btn-row reveal">
-    <a href="https://www.linkedin.com/in/aadi-jain-tech/" class="btn btn-primary" target="_blank" rel="noopener">LinkedIn</a>
+<section class="footer-cta">
+  <h2>Let's talk</h2>
+  <p>I'm actively looking for Product Management roles where engineering depth, stakeholder-driven thinking, and real shipping experience matter.</p>
+  <div class="btn-row">
+    <a href="https://www.linkedin.com/in/aadi-jain-tech/" class="btn btn-primary" target="_blank">LinkedIn</a>
     <a href="mailto:aadijain725@gmail.com" class="btn btn-outline">Email me</a>
   </div>
 </section>
@@ -193,6 +442,5 @@
   Built by Aadi Jain &middot; 2026
 </footer>
 
-<script src="js/main.js"></script>
 </body>
 </html>
